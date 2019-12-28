@@ -8,7 +8,6 @@
 .parent-element {
   width: 60%;
   margin: auto;
-  min-height: 200vh;
 }
 
 .sticky-header {

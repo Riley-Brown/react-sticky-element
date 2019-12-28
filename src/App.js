@@ -12,11 +12,14 @@ function App() {
 
   return (
     <>
-      <div className="parent-element">
+      <div className="parent-element" style={{ minHeight: "200vh" }}>
         <div
           ref={myRef}
           className="sticky-header"
-          style={{ padding: isSticky ? "2rem 0" : "1px 0 0 0" }}
+          style={{
+            position: "sticky",
+            padding: isSticky ? "2rem 0" : "1px 0 0 0"
+          }}
         >
           <h1>Hey There</h1>
           <h1>Active sticky: {isSticky.toString()}</h1>
