@@ -11,24 +11,22 @@ function App() {
   });
 
   return (
-    <>
-      <div className="parent-element" style={{ minHeight: "200vh" }}>
-        <div
-          ref={myRef}
-          className="sticky-header"
-          style={{
-            position: "sticky",
-            padding: isSticky ? "2rem 0" : "1px 0 0 0"
-          }}
-        >
-          <h1>Hey There</h1>
-          <h1>Active sticky: {isSticky.toString()}</h1>
+    <div className="parent-element" style={{ minHeight: "200vh" }}>
+      <div
+        ref={myRef}
+        className="sticky-header"
+        style={{
+          position: "sticky",
+          padding: isSticky ? "2rem 0" : "1px 0 0 0"
+        }}
+      >
+        <h1>Hey There</h1>
+        <h1>Active sticky: {isSticky.toString()}</h1>
 
-          <span className="animated-line" />
-        </div>
-        <Content />
+        <span className="animated-line" />
       </div>
-    </>
+      <Content />
+    </div>
   );
 }
 
