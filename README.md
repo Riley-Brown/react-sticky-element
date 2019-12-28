@@ -2,6 +2,8 @@
 
 Useful for wanting to style a `position: sticky` element differently once it is in a sticky state.
 
+[Code sandbox demo](https://codesandbox.io/s/elegant-violet-2h760?fontsize=14&hidenavigation=1&module=%2Fsrc%2FuseStickyElement.jsx&theme=dark)
+
 ![](./demo.gif)
 
 # Basic hook usage
