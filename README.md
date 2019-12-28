@@ -1,68 +1,68 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React hook for detecting active sticky position
 
-## Available Scripts
+Useful for wanting to style a `position: sticky` element differently once it is in a sticky state.
 
-In the project directory, you can run:
+![](./demo.gif)
 
-### `npm start`
+# Basic hook usage
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```jsx
+import React, { useRef } from "react";
+import useStickyElement from "./useStickyElement";
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+const myRef = useRef();
+const isSticky = useStickyElement({
+  element: myRef,
+  activeClass: "active-sticky"
+});
 
-### `npm test`
+return (
+  <div className="parent-element">
+    <div
+      ref={myRef}
+      className="sticky-header"
+      style={{
+        position: "sticky",
+        padding: isSticky ? "2rem 0" : "1px 0 0 0"
+      }}
+    >
+      <h1>Active sticky: {isSticky.toString()}</h1>
+    </div>
+  </div>
+);
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Arguments
 
-### `npm run build`
+Arguments passed to `useStickyElement()` invocation
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `element`
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+An element observed by the hook to detect an active sticky position state
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Type: `string` or `React.useRef`
+- Required: `true`
 
-### `npm run eject`
+  example:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+  ```jsx
+  const myRef = React.useRef();
+  const isSticky = useStickyElement({ element: myRef });
+  ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  or
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+  ```jsx
+  const isSticky = useStickyElement({
+    element: ".class-or-id-in-your-component"
+  });
+  ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  <hr>
 
-## Learn More
+### `activeClass`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Toggles class to element when in an active sticky state
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Type: `string`
+- Required: `false`
